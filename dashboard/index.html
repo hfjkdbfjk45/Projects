@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Salman Nur's reproducible NBA, F1, and NFL sports analytics projects."><title>ScoreLab | Salman Nur</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<header><a class="brand" href="/" aria-label="ScoreLab home"><span class="brand-icon">S</span>ScoreLab<span class="brand-label">SPORTS ANALYTICS</span></a><div class="header-right"><span class="status"><i></i>LOCAL DEMO</span><a href="https://github.com/hfjkdbfjk45/Projects" target="_blank" rel="noreferrer">View source ↗</a></div></header>
+<main>
+<section class="intro"><div><p class="eyebrow">SALMAN NUR / ENGINEERING PORTFOLIO</p><h1>Make the next move<br><span>with better information.</span></h1><p class="intro-copy">Three sports. Three working analytics projects.<br>Inspect the rules, compare scenarios, and explore predictions.</p></div><div class="intro-aside"><span>01 / 03</span><p>JAVA · C# · PYTHON<br>MONTE CARLO · MACHINE LEARNING</p><div class="little-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
+<nav class="tabs" aria-label="Project selection"><button class="tab active" data-tab="nba" aria-selected="true"><b>01</b> NBA Trade Machine <span>↗</span></button><button class="tab" data-tab="f1" aria-selected="false"><b>02</b> F1 Strategy Simulator <span>↗</span></button><button class="tab" data-tab="nfl" aria-selected="false"><b>03</b> NFL Play Predictor <span>↗</span></button></nav>
+<div id="global-error" class="error" role="alert" hidden></div>
+<section id="nba" class="project-panel">
+ <div class="section-title"><div><p class="eyebrow">TRADE CONSTRUCTION</p><h2>Build a deal. Check the constraints.</h2></div><span class="badge">FICTIONAL ROSTERS · 2024–25 RULES</span></div>
+ <p class="subtext">Select players or drag them to the other team. Java evaluates salary matching, supplied apron salaries, and hard caps.</p>
+ <div class="team-grid" id="nba-teams"></div>
+ <div class="trade-toolbar"><span id="trade-count">0 players selected</span><div><button class="secondary" id="nba-reset">Load example</button><button class="secondary" id="nba-clear">Clear</button><button class="primary" id="nba-validate">Validate trade →</button></div></div>
+ <div id="nba-result" aria-live="polite"></div>
+ <p class="footnote">Scope: documented salary and roster checks. Contract exceptions, trade timing, draft picks, and full CBA certification require further review.</p>
+</section>
+<section id="f1" class="project-panel" hidden>
+ <div class="section-title"><div><p class="eyebrow">RACE STRATEGY</p><h2>Test the pit window.</h2></div><span class="badge">SYNTHETIC PACE ASSUMPTIONS</span></div>
+ <p class="subtext">Compare four pit strategies under the same random weather and pace scenarios. Lower modeled race time wins.</p>
+ <form id="f1-form" class="controls"><label>Race laps<input name="laps" type="number" min="20" max="80" value="57" required></label><label>Runs per strategy<input name="runs" type="number" min="100" max="20000" value="1000" required></label><label>Rain probability (%)<input name="rainProbability" type="number" min="0" max="100" value="25" required></label><label>Pit loss (s)<input name="pitLoss" type="number" min="10" max="45" value="22" required></label><label>Random seed<input name="seed" type="number" min="0" max="2147483647" value="42" required></label><button class="primary" type="submit">Run simulation →</button></form>
+ <div id="f1-results" aria-live="polite"><div class="empty">Run a simulation to compare strategies.</div></div>
+ <details class="telemetry"><summary>Explore normalized OpenF1 telemetry</summary><p class="subtext">Run the .NET import command in the README, then load <code>laps_normalized.csv</code> here. The file stays in your browser.</p><label class="file-label">Load lap CSV<input type="file" id="telemetry-file" accept=".csv"></label><div id="telemetry-result"></div></details>
+ <p class="footnote">The simulation uses illustrative tyre, fuel, and rain assumptions. OpenF1 telemetry is imported separately and does not automatically calibrate the model.</p>
+</section>
+<section id="nfl" class="project-panel" hidden>
+ <div class="section-title"><div><p class="eyebrow">PLAY CALL ANALYSIS</p><h2>Read the situation.</h2></div><span class="badge">TRAINED SYNTHETIC DEMO BASELINE</span></div>
+ <p class="subtext">Predict run or pass from pre-snap information. On fourth down, compare go-for-it, field-goal, and punt scenarios.</p>
+ <div class="nfl-layout"><form id="nfl-form" class="nfl-inputs card"><h3>Game situation</h3><div class="input-grid"><label>Down<select name="down"><option>1</option><option>2</option><option>3</option><option selected>4</option></select></label><label>Yards to go<input name="ydstogo" type="number" min="1" max="99" value="3" required></label><label>Yards from opponent's goal<input name="yardline_100" type="number" min="1" max="99" value="38" required></label><label>Game clock (seconds)<input name="seconds_remaining" type="number" min="1" max="3600" value="420" required></label><label>Offense score difference<input name="score_differential" type="number" min="-80" max="80" value="-3" required></label><label>Quarter<select name="quarter"><option>1</option><option>2</option><option>3</option><option selected>4</option></select></label><label>Previous offensive call<select name="previous_play"><option value="none">None</option><option value="run">Run</option><option value="pass" selected>Pass</option></select></label><label>Simulation runs<input name="runs" type="number" min="100" max="5000" value="2000" required></label></div><button class="primary" type="submit">Analyze situation →</button><p class="footnote">Fourth-down comparison supports the last 900 seconds of the game.</p></form><div id="nfl-results" class="nfl-output" aria-live="polite"><div class="empty">Analyze a situation to see probabilities.</div></div></div>
+ <div id="nfl-metrics"></div><p class="footnote">Demo: logistic classifier plus empirical game simulation. Full PyTorch Transformer, Flask, React, PostgreSQL, and Docker workflows are included in the repository. Win estimates are uncalibrated.</p>
+</section>
+<footer><p>Built to inspect. Designed to reproduce.</p><a href="https://github.com/hfjkdbfjk45/Projects" target="_blank" rel="noreferrer">Source, tests & documentation ↗</a></footer>
+</main><script type="module" src="/app.js"></script></body></html>

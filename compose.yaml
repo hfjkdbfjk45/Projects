@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: sports
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-portfolio-demo-password}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./projects/nfl-play-predictor/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio -d sports"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  nfl:
+    build:
+      context: .
+      dockerfile: projects/nfl-play-predictor/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://portfolio:${POSTGRES_PASSWORD:-portfolio-demo-password}@postgres:5432/sports
+    ports: ["127.0.0.1:5000:5000"]
+    depends_on:
+      postgres: {condition: service_healthy}
+  nba-engine:
+    build:
+      context: .
+      dockerfile: projects/nba-trade-machine/Java.Dockerfile
+  nba-api:
+    build:
+      context: .
+      dockerfile: projects/nba-trade-machine/Api.Dockerfile
+    environment:
+      NBA_ENGINE_URL: http://nba-engine:8081
+    ports: ["127.0.0.1:5080:5080"]
+    depends_on: [nba-engine]
+volumes:
+  postgres-data:

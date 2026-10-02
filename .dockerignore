@@ -1,0 +1,12 @@
+.git
+**/__pycache__
+**/node_modules
+**/build
+**/dist
+**/bin
+**/obj
+**/output
+**/data/raw
+.env
+*.log
+docs/screenshots

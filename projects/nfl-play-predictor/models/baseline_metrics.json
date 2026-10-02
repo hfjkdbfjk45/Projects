@@ -1,0 +1,59 @@
+{
+  "model": "logistic baseline",
+  "data_source": "synthetic demo data; not observed NFL games",
+  "dataset_sha256": "be9e4014b0302e8d98a014f0eabcac9f54f95e624da4442034fdd4b9dcbcba85",
+  "seed": 42,
+  "features": [
+    "intercept",
+    "down",
+    "log_distance",
+    "field_position",
+    "time_remaining",
+    "score_difference",
+    "quarter",
+    "previous_call",
+    "down_distance"
+  ],
+  "splits": {
+    "train": {
+      "rows": 2880,
+      "games": 72,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "validation": {
+      "rows": 480,
+      "games": 12,
+      "seasons": [
+        2024
+      ]
+    },
+    "test": {
+      "rows": 480,
+      "games": 12,
+      "seasons": [
+        2025
+      ]
+    }
+  },
+  "test": {
+    "rows": 480,
+    "accuracy": 0.6541666666666667,
+    "f1": 0.5388888888888889,
+    "balanced_accuracy": 0.6360498326645757,
+    "brier": 0.2148106421481333,
+    "confusion_matrix": {
+      "true_pass": 97,
+      "true_run": 217,
+      "false_pass": 46,
+      "false_run": 120
+    }
+  },
+  "majority_baseline_accuracy": 0.5479166666666667
+}

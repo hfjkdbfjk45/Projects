@@ -1,0 +1,16 @@
+{
+  "dataSource": "fictional demo rosters; frozen 2024-25 cap rules",
+  "teams": [
+    {"id":"CLE","name":"Columbus Comets","payroll":163000000,"apronPayroll":163000000,"rosterSize":15,"hardCap":null,"players":[
+      {"id":"cle-1","name":"Marcus Cole","position":"PG","salary":18000000,"tradeEligible":true},
+      {"id":"cle-2","name":"Devin Brooks","position":"SF","salary":8000000,"tradeEligible":true},
+      {"id":"cle-3","name":"Jalen Reed","position":"C","salary":4000000,"tradeEligible":true}
+    ]},
+    {"id":"NYC","name":"Harbor Knights","payroll":155000000,"apronPayroll":155000000,"rosterSize":14,"hardCap":null,"players":[
+      {"id":"nyc-1","name":"Isaiah Grant","position":"SG","salary":20000000,"tradeEligible":true},
+      {"id":"nyc-2","name":"Noah Price","position":"PF","salary":9000000,"tradeEligible":true},
+      {"id":"nyc-3","name":"Evan Scott","position":"PG","salary":3000000,"tradeEligible":true}
+    ]}
+  ],
+  "moves":[{"playerId":"cle-1","fromTeam":"CLE","toTeam":"NYC"},{"playerId":"nyc-1","fromTeam":"NYC","toTeam":"CLE"}]
+}

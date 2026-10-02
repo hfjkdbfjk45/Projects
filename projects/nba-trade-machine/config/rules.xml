@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Frozen 2024-25 snapshot. Team/player data in the demo is fictional. -->
+<tradeRules season="2024-25">
+  <salaryCap>140588000</salaryCap>
+  <baseSalaryCap>136021000</baseSalaryCap>
+  <firstApron>178132000</firstApron>
+  <secondApron>188931000</secondApron>
+  <standardAllowance>250000</standardAllowance>
+  <expandedBaseAllowance>7500000</expandedBaseAllowance>
+  <maxRoster>15</maxRoster>
+</tradeRules>

@@ -1,0 +1,65 @@
+name: Verify portfolio
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - run: python scripts/check.py
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - uses: actions/setup-dotnet@v4
+        with: {dotnet-version: '8.0.x'}
+      - run: python launch.py --check
+      - run: dotnet build projects/nba-trade-machine/api
+      - run: dotnet build projects/f1-strategy-simulator/pipeline
+      - run: python scripts/verify_dotnet.py
+  machine-learning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - run: pip install -r projects/nfl-play-predictor/requirements-ml.txt --index-url https://download.pytorch.org/whl/cpu
+      - run: python scripts/check.py
+      - run: python projects/nfl-play-predictor/scripts/train_transformer.py --epochs 2 --output output/transformer
+      - uses: actions/upload-artifact@v4
+        with: {name: transformer-demo-evaluation, path: output/transformer/metadata.json}
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: pip install -r projects/nfl-play-predictor/requirements.txt
+      - run: npm install && npm run build
+        working-directory: projects/nfl-play-predictor/frontend
+      - run: npm install --prefix .ci playwright
+      - run: .ci/node_modules/.bin/playwright install --with-deps chromium
+      - run: node scripts/ui_smoke.cjs
+        env:
+          NODE_PATH: ${{ github.workspace }}/.ci/node_modules
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: dashboard-screenshots, path: docs/screenshots/*.png}

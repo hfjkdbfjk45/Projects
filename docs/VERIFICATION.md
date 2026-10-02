@@ -13,7 +13,7 @@ Created October 2, 2026. This record describes tested implementations and explic
 
 ## Confirmed GitHub Actions results
 
-[Implementation verification run](https://github.com/hfjkdbfjk45/Projects/actions/runs/37022461116) completed successfully for commit `630808da294ec1fff36ed459deeb4465d01eab9c`.
+[Complete verification run](https://github.com/hfjkdbfjk45/Projects/actions/runs/37023996842) completed successfully for commit `a8267c1fa5d887449e69b0f7e199ffa38fb9869f`. All five jobs passed.
 
 | Job | Observed result |
 | --- | --- |
@@ -21,10 +21,11 @@ Created October 2, 2026. This record describes tested implementations and explic
 | .NET | Both projects built with zero errors; fixture importer accepted four timed laps and dropped one; live Java-to-C# request chain passed |
 | Machine learning | All 20 Python tests passed with PyTorch installed; causal masking/gradient checks passed; a two-epoch Transformer smoke-training run completed |
 | Browser | React production build passed; valid/invalid NBA trades, F1, NFL, mobile layout, and React-to-Flask flows passed without page errors |
+| Containers | All Docker images built and services started; Java/C# and React/Flask endpoints passed; PostgreSQL ETL loaded 3,840 plays twice and retained exactly 3,840 unique rows |
 
-The actual CI screenshots are committed under `docs/screenshots/`. The [two-epoch Transformer metadata](transformer-demo-metrics.json) is preserved from the Actions artifact. Its synthetic test accuracy was 60.83%; this short run verifies the training workflow and is not a real NFL performance benchmark.
+The actual CI screenshots are committed under `docs/screenshots/`. The [two-epoch Transformer metadata](transformer-demo-metrics.json) is preserved from the [initial implementation run](https://github.com/hfjkdbfjk45/Projects/actions/runs/37022461116). Its synthetic test accuracy was 60.83%; this short run verifies the training workflow and is not a real NFL performance benchmark.
 
-Docker/container startup and PostgreSQL idempotence checks are included in the workflow's container job; consult its current run for the observed outcome. MATLAB execution, historical imports, live-provider access, and AWS deployment remain outside the completed verification.
+MATLAB execution, historical imports, live-provider access, and AWS deployment remain outside the completed verification.
 
 ## Measured demo evaluation
 

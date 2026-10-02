@@ -36,7 +36,7 @@ python3 scripts/run_f1.py --runs 1000 --output output/f1
 python3 projects/nfl-play-predictor/scripts/train_baseline.py --generate-demo
 ```
 
-The tests check invalid trades, hard caps, seed reproducibility, pre-snap feature isolation, chronological holdouts, input validation, and HTTP behavior. GitHub Actions additionally checks .NET compilation/integration, PyTorch gradients and training, React builds, and browser flows. Browser screenshots and Transformer evaluation metadata are downloadable from each Actions run.
+The tests check invalid trades, hard caps, seed reproducibility, pre-snap feature isolation, chronological holdouts, input validation, and HTTP behavior. GitHub Actions additionally checks .NET compilation/integration, PyTorch gradients and training, React builds, browser flows, Docker startup, and repeated PostgreSQL imports. Browser screenshots and Transformer evaluation metadata are downloadable from each Actions run.
 
 ## Run the full stacks
 

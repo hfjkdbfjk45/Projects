@@ -11,7 +11,20 @@ Created October 2, 2026. This record describes tested implementations and explic
 - **2 PyTorch tests** require PyTorch and run in the machine-learning CI job; they were skipped in the local environment because PyTorch was absent.
 - JavaScript passed Node syntax checking.
 
-The current local environment does not include .NET, PyTorch, npm frontend dependencies, MATLAB, Docker, or a browser executable. GitHub Actions is configured to execute .NET, PyTorch, React, and browser verification using suitable runners. See the [current workflow runs](https://github.com/hfjkdbfjk45/Projects/actions/workflows/verify.yml) for actual outcomes; configuration alone is not evidence of a pass.
+## Confirmed GitHub Actions results
+
+[Implementation verification run](https://github.com/hfjkdbfjk45/Projects/actions/runs/37022461116) completed successfully for commit `630808da294ec1fff36ed459deeb4465d01eab9c`.
+
+| Job | Observed result |
+| --- | --- |
+| Core | 26 Java checks and 18 Python/HTTP tests passed; two optional PyTorch tests skipped in this job |
+| .NET | Both projects built with zero errors; fixture importer accepted four timed laps and dropped one; live Java-to-C# request chain passed |
+| Machine learning | All 20 Python tests passed with PyTorch installed; causal masking/gradient checks passed; a two-epoch Transformer smoke-training run completed |
+| Browser | React production build passed; valid/invalid NBA trades, F1, NFL, mobile layout, and React-to-Flask flows passed without page errors |
+
+The actual CI screenshots are committed under `docs/screenshots/`. The [two-epoch Transformer metadata](transformer-demo-metrics.json) is preserved from the Actions artifact. Its synthetic test accuracy was 60.83%; this short run verifies the training workflow and is not a real NFL performance benchmark.
+
+Docker/container startup and PostgreSQL idempotence checks are included in the workflow's container job; consult its current run for the observed outcome. MATLAB execution, historical imports, live-provider access, and AWS deployment remain outside the completed verification.
 
 ## Measured demo evaluation
 

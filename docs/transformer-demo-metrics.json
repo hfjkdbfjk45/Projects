@@ -1,0 +1,66 @@
+{
+  "model": "causal transformer",
+  "data_source": "synthetic demo data; not observed NFL games",
+  "dataset_sha256": "be9e4014b0302e8d98a014f0eabcac9f54f95e624da4442034fdd4b9dcbcba85",
+  "seed": 42,
+  "architecture": {
+    "n_features": 8,
+    "width": 32,
+    "heads": 4,
+    "layers": 2,
+    "max_length": 8
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6700740483072068,
+      "validation_brier": 0.2277972890257217
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6508819606569078,
+      "validation_brier": 0.22274149325538325
+    }
+  ],
+  "test": {
+    "rows": 480,
+    "accuracy": 0.6083333333333333,
+    "f1": 0.41975308641975306,
+    "balanced_accuracy": 0.5825375409577543,
+    "brier": 0.23289378495967278,
+    "confusion_matrix": {
+      "true_pass": 68,
+      "true_run": 224,
+      "false_pass": 39,
+      "false_run": 149
+    }
+  },
+  "splits": {
+    "train": {
+      "rows": 2880,
+      "games": 72,
+      "seasons": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "validation": {
+      "rows": 480,
+      "games": 12,
+      "seasons": [
+        2024
+      ]
+    },
+    "test": {
+      "rows": 480,
+      "games": 12,
+      "seasons": [
+        2025
+      ]
+    }
+  }
+}

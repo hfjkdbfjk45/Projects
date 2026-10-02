@@ -85,7 +85,7 @@ The primary key is `(game_id, play_id)`; ETL uses parameterized batched upserts.
 
 The simulation bootstraps yards from the training split by run/pass and distance bucket, then rolls out possession changes, simplified drives, kicking assumptions, and clock consumption. It compares go-for-it, field-goal, and punt actions with reproducible seeds and Monte Carlo uncertainty. Ties count as half a win.
 
-This is **uncalibrated**. Clock management, team strengths, game rules at period boundaries, timeouts, penalties, turnovers other than on downs, overtime, and professional kicking models are not fully represented. Intervals describe sampling error, not total model uncertainty. Do not use these numbers as betting or coaching-grade forecasts.
+This is **uncalibrated**. Clock management, team strengths, game rules at period boundaries, timeouts, penalties, turnovers other than on downs, overtime, and professional kicking models are not fully represented. Intervals describe sampling error, not total model uncertainty.
 
 ## Live data
 

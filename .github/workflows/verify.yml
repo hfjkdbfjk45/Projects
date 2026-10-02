@@ -63,3 +63,15 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with: {name: dashboard-screenshots, path: docs/screenshots/*.png}
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: docker compose up --build -d
+      - run: python scripts/verify_containers.py
+      - run: docker compose logs
+        if: failure()
+      - run: docker compose down
+        if: always()

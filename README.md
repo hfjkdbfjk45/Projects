@@ -12,7 +12,7 @@ Three runnable sports analytics projects in one repository. Start the combined d
 | [F1 Strategy Simulator](projects/f1-strategy-simulator/) | Paired Monte Carlo race-time comparison; tyre/fuel/weather factors; lap charts; historical telemetry normalization | Java, C#/.NET, MATLAB |
 | [NFL Play Predictor](projects/nfl-play-predictor/) | Trained run/pass baseline; causal Transformer training; fourth-down simulations; data import and database ETL | Python, PyTorch, Flask, React, PostgreSQL, Docker |
 
-Bundled NBA rosters and NFL plays are **fictional/synthetic demo data**. F1 simulation parameters are illustrative. Actual measurements, limitations, and data provenance are documented in [VERIFICATION.md](docs/VERIFICATION.md) and [DATA_SOURCES.md](docs/DATA_SOURCES.md). The repository was built with AI coding assistance in October 2026; it does not substantiate unmeasured resume statistics.
+Bundled NBA rosters and NFL plays are **fictional/synthetic demo data**. F1 simulation parameters are illustrative. Actual measurements, limitations, and data provenance are documented in [VERIFICATION.md](docs/VERIFICATION.md) and [DATA_SOURCES.md](docs/DATA_SOURCES.md). The repository was built with AI coding assistance in October 2026; performance claims are limited to reproducible measurements.
 
 ## Run the combined demo
 
@@ -70,3 +70,11 @@ Docker serves the baseline by default. PyTorch training is an optional separate 
 | `docs/` | Data sources, verification, owner guide, deployment notes |
 
 For a short walkthrough and interview preparation, start with [OWNER_GUIDE.md](docs/OWNER_GUIDE.md).
+
+## Demo preview
+
+Screenshots captured by the passing browser workflow, not rendered mockups:
+
+![NBA trade selection and Java validation in the ScoreLab dashboard](docs/screenshots/nba.png)
+
+[F1 strategy dashboard](docs/screenshots/f1.png) · [NFL prediction dashboard](docs/screenshots/nfl.png) · [Mobile layout](docs/screenshots/mobile.png)
